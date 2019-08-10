@@ -8,7 +8,7 @@ using System.Threading;
 
 class Program
 {
-    /*   LESSION1 - HELLO WORLD*/
+    /*   LESSON 1 - HELLO WORLD*/
 
     /* 
  * static void Main1()
@@ -25,7 +25,7 @@ static void Main()
 }
 */
 
-    /* LESSION 2 - READ & WRITE TO CONSOLE*/
+    /* LESSON 2 - READ & WRITE TO CONSOLE*/
 
     /*
      * static void Main()
@@ -42,7 +42,7 @@ static void Main()
     }
     */
 
-    /* LESSION 3 - BUILT-IN TYPES*/
+    /* LESSON 3 - BUILT-IN TYPES*/
 
     /*
      * static void Main()
@@ -57,7 +57,7 @@ static void Main()
     }
     */
 
-    /* LESSION 4 - STRING TYPE*/
+    /* LESSON 4 - STRING TYPE*/
 
     /*
     static void Main()
@@ -87,12 +87,12 @@ static void Main()
     }
     */
 
-    /* LESSION 5 - COMMON OPERATORS*/
+    /* LESSON 5 - COMMON OPERATORS*/
 
     /*
      static void Main()
     {
-        //assingmet - =
+        //assignment - =
         //arithmetic - +, -, +, /, %
         //comparison - ++, !=, >, >=, <, <=
         //conditional - &&, ||
@@ -140,7 +140,7 @@ static void Main()
     }
     */
 
-    /* LESSION 6 - NULLABLE TYPES*/
+    /* LESSON 6 - NULLABLE TYPES*/
 
     /*
 
@@ -189,7 +189,7 @@ static void Main()
         }
     */
 
-    /* LESSION 7 - DATATYPE CONVERSIONS*/
+    /* LESSON 7 - DATATYPE CONVERSIONS*/
 
     /*
     static void Main()
@@ -223,7 +223,7 @@ static void Main()
     }
     */
 
-    /* LESSION 8 - ARRAYS */
+    /* LESSON 8 - ARRAYS */
 
     /*
     static void Main()
@@ -240,7 +240,7 @@ static void Main()
     }
     */
 
-    /* LESSION 9 - COMMENTS */
+    /* LESSON 9 - COMMENTS */
 
     /*
         //ctrl+k, ctrl+c
@@ -264,7 +264,7 @@ static void Main()
     }
     */
 
-    /* LESSION 10 - IF STATEMENT */
+    /* LESSON 10 - IF STATEMENT */
 
     /*
     static void Main()
@@ -305,7 +305,7 @@ static void Main()
     }
     */
 
-    /* LESSION 11 - SWITCH STATEMENT - PART 1 */
+    /* LESSON 11 - SWITCH STATEMENT - PART 1 */
 
     /*
     static void Main()
@@ -332,7 +332,7 @@ static void Main()
     }
     */
 
-    /* LESSION 12 - SWITCH STATEMENT - PART 2 */
+    /* LESSON 12 - SWITCH STATEMENT - PART 2 */
 
     /*
         static void Main()
@@ -381,7 +381,7 @@ static void Main()
         }
         */
 
-    /* LESSION 13 - WHILE LOOP */
+    /* LESSON 13 - WHILE LOOP */
 
     /*
     static void Main()
@@ -399,7 +399,7 @@ static void Main()
     }
     */
 
-    /* LESSION 14 - DO WHILE LOOP */
+    /* LESSON 14 - DO WHILE LOOP */
 
     /*
     static void Main()
@@ -474,7 +474,7 @@ static void Main()
     }
     */
 
-    /* LESSION 15 - FOR AND FOREACH LOOP */
+    /* LESSON 15 - FOR AND FOREACH LOOP */
 
     static void Main()
     {
@@ -482,6 +482,6 @@ static void Main()
     }
 
 
-    /* LESSION 16 - METHODS */
+    /* LESSON 16 - METHODS */
 }
 
