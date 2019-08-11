@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
+using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Services;
 using System.Threading;
-
+using static System.Console;
+using PATA = ProjectA.TeamA;
+using PATB = ProjectA.TeamB;
+//using PATA = ProjectA.TeamA;
+//using PATB = ProjectA.TeamB;
 
 class Program
 {
@@ -476,12 +480,297 @@ static void Main()
 
     /* LESSON 15 - FOR AND FOREACH LOOP */
 
+    /*
     static void Main()
+    {
+        //int[] Numbers = new int[3];
+        //
+        //Numbers[0] = 101;
+        //Numbers[1] = 102;
+        //Numbers[2] = 103;
+        //
+        //
+        //
+        //
+        //foreach (int k in Numbers)
+        //{
+        //    Console.WriteLine(k);
+        //}
+        //
+        //for (int j = 0; j < Numbers.Length; j++)
+        //{
+        //    Console.WriteLine(Numbers[j]);
+        //}
+        //
+        //int i = 0;
+        //while (i < Numbers.Length)
+        //{
+        //    Console.WriteLine(Numbers[i]);
+        //    i++;
+        //}
+
+        for (int i = 0; i <= 20; i++)//i+=2 - even numbers
+        {
+            if (i % 2 == 1)
+                continue;
+
+            Console.WriteLine(i);
+
+            //if (i == 10)
+            //    break;
+
+        }
+    }
+    */
+
+    /* LESSON 16 - METHODS */
+
+    /*
+    public static void Main()
+    {
+        //public void EvenNumbers()
+        //Program p = new Program();
+        //p.EvenNumbers();
+
+        //public static void EvenNumbers()
+        EvenNumbers(30);
+
+        Program p = new Program();
+        int sum = p.Add(10, 20);
+
+        Console.WriteLine("Sum = {0}", sum);
+
+    }
+
+    public int Add(int FN, int SN)
+    {
+        return FN + SN;
+    }
+
+    public static void EvenNumbers(int target)
+    {
+        //for (int i = 0; i <= 20; i++)
+        //{
+        //    if (i % 2 == 1)
+        //        continue;
+        //
+        //    Console.WriteLine(i);
+        //}
+
+        int start = 0;
+
+        while (start <= target)
+        {
+            Console.WriteLine(start);
+            start += 2;
+        }
+    }
+    */
+
+    /* LESSON 17 - METHOD PARAMETERS */
+
+    /*
+    public static void Main()
+    {
+                //  VALUE PARAMETER
+        //int i = 0;
+        //SimpleMethod(i)
+        //
+        //Console.WriteLine(i);
+
+
+                //  REFERENCE PARAMETER
+        //int i = 0;
+        //SimpleMethod(ref i)
+        //
+        //Console.WriteLine(i);
+
+                // OUT PARAMETER
+        //int total = 0;
+        //int product = 0;
+        //Calculate(10,20, out total, out product);
+        //
+        //Console.WriteLine("Sum = {0} and Product = {1}", total, product);
+
+                // PARAMETER ARRAYS
+        int[] Numbers = new int[3];
+
+        Numbers[0] = 101;
+        Numbers[1] = 102;
+        Numbers[2] = 103;
+
+        //ParamsMethod();
+        //ParamsMethod(Numbers);
+        ParamsMethod(1,2,3,4,5,6,7);
+
+    }
+
+    public static void ParamsMethod(int x, params int[] numbers)//params always last
+    {
+        Console.WriteLine("Total elements in array {0}", numbers.Length);
+
+        foreach (int i in numbers)
+        {
+            Console.WriteLine(i);
+        }
+    }
+
+    //OUT PARAMETER
+    public static void Calculate(int FN, int SN, out int Sum, out int Product)
+    {
+        Sum = FN + SN;
+        Product = FN * SN;
+    }
+
+    //VALUE & PARAMETER REFERENCE
+    public static void SimpleMethod(ref int j)//W/O ref - value reference
+    {
+        j = 101;
+    }
+    
+    */
+
+    /* LESSON 18 - NAMESPACES */
+
+    /*
+    public static void Main()
+    {
+        //ProjectA.TeamA.ClassA.Print();
+        PATA.ClassA.Print();
+        //ProjectA.TeamB.ClassA.Print();
+        PATB.ClassA.Print();
+    }
+
+
+//namespace ProjectA
+//{
+//    namespace TeamA
+//    {
+//        class ClassA
+//        {
+//            public static void Print()
+//            {
+//                Console.WriteLine("Team A Print Method");
+//            }
+//        }
+//    }
+//}
+//
+//namespace ProjectA
+//    {
+//        namespace TeamB
+//        {
+//            class ClassA
+//            {
+//                public static void Print()
+//                {
+//                    Console.WriteLine("Team B Print Method");
+//                }
+//            }
+//        }
+//
+//    }
+    */
+
+    /* LESSON 19 - CLASSES*/
+
+    /*
+    class Customer
+    {
+        string _firstname;
+        string _lastname;
+
+
+        public Customer() 
+            : this("No FirstName Provided", "No LastName provided")
+        {
+
+        }
+        
+        public Customer(string FirstName, string LastName)
+        {
+            this._firstname = FirstName;
+            this._lastname = LastName;
+        }
+
+        public void PrintFullName()
+        {
+            Console.WriteLine("Full name = {0} {1}", this._firstname, this._lastname);
+        }
+
+        ~Customer()//destructor
+        {
+            //clean up code
+        }
+    }
+
+
+    static void Main()
+    {
+        Customer C1 = new Customer();
+        C1.PrintFullName();
+
+        Customer C2 = new Customer("Dino", "Nikolovski");
+        C2.PrintFullName();
+    }
+    */
+
+    /* LESSON 20 - STATIC AND INSTANCE CLASS MEMBERS*/
+
+    /*
+    class Circle
+    {
+        public static float _PI;// = 3.141F;
+        int _Radius;
+
+        static Circle()
+        {
+            WriteLine("Static Constructor Called");
+            Circle._PI = 3.141F;
+        }
+
+        public Circle(int Radius)
+        {
+            WriteLine("Instance Constructor Called");
+            this._Radius = Radius;
+        }
+
+        public static void Print()
+        {
+            WriteLine("This is static Method");
+        }
+
+        public float CalculateArea()
+        {
+            return Circle._PI * this._Radius * this._Radius;
+        }
+    }
+
+
+    public static void Main()
+    {
+        //Circle C1 = new Circle(5);
+        //float Area1 = C1.CalculateArea();
+        //Circle.Print();
+        //WriteLine("Area = {0}", Area1);
+
+        //Circle C2 = new Circle(6);
+        //float Area2 = C2.CalculateArea();
+        //WriteLine("Area = {0}", Area2);
+
+        WriteLine(Circle._PI);//public static float_PI
+    }
+    */
+
+    /* LESSON 21 - INHERITANCE */
+
+    public static void Main()
     {
 
     }
 
 
-    /* LESSON 16 - METHODS */
-}
+    /* LESSON 22 - METHOD HIDING*/
 
+
+}
