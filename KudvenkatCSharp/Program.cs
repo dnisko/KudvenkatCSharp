@@ -1580,8 +1580,73 @@ delegate bool IsPromotable(Employee empl);
     }
     */
 
-    //TODO
     /* LESSON 39 - TUTORIAL MULTI CAST DELEGATES */
+
+    /*
+        //public delegate void SampleDelegate();
+        //public delegate int SampleDelegate();
+        public delegate void SampleDelegate(out int Integer);
+
+        public static void Main()
+        {
+            SampleDelegate del = new SampleDelegate(SampleMethodOne);
+            del += SampleMethodTwo;
+
+            //int DelegateReturnValue = del();
+            int DelegateOutputParameterValue = -1;
+
+            del(out DelegateOutputParameterValue);
+
+
+            WriteLine("DelegateReturnedValue = {0}", DelegateOutputParameterValue);
+            //WriteLine("DelegateReturnValue {0}", DelegateReturnValue);
+
+            //SampleDelegate del = new SampleDelegate(SampleMethodOne);
+            //del += SampleMethodTwo;
+            //del += SampleMethodThree;
+            //del += SampleMethodFour;
+            //del();
+
+            //SampleDelegate del1, del2, del3, del4;
+            //del1 = new SampleDelegate(SampleMethodOne);
+            //del2 = new SampleDelegate(SampleMethodTwo);
+            //del3 = new SampleDelegate(SampleMethodThree);
+            //
+            //del4 = del1 + del2 + del3 - del2;
+            //del4();
+        }
+
+        public static void SampleMethodOne(out int Number)
+        {
+            Number = 1;
+            //WriteLine("SampleMethodOne Invoked");
+        }
+        public static void SampleMethodTwo(out int Number)
+        {
+            Number = 2;
+            //WriteLine("SampleMethodTwo Invoked");
+        }
+        public static void SampleMethodThree(out int Number)
+        {
+            Number = 3;
+            //WriteLine("SampleMethodThree Invoked");
+        }
+        //public static void SampleMethodFour()
+        //{
+        //    WriteLine("SampleMethodFour Invoked");
+        //}
+
+        public static int SampleMethodOne()
+        {
+            return 1;
+        }
+        public static int SampleMethodTwo()
+        {
+            return 2;
+        }
+        */
+
+    /* LESSON 40 - TUTORIAL EXCEPTION HANDLING */
 
     public static void Main()
     {
