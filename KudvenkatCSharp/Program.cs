@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Diagnostics.Eventing.Reader;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Services;
@@ -1580,7 +1581,7 @@ delegate bool IsPromotable(Employee empl);
     }
     */
 
-    /* LESSON 39 - TUTORIAL MULTI CAST DELEGATES */
+    /* LESSON 39 - MULTI CAST DELEGATES */
 
     /*
         //public delegate void SampleDelegate();
@@ -1646,10 +1647,107 @@ delegate bool IsPromotable(Employee empl);
         }
         */
 
-    /* LESSON 40 - TUTORIAL EXCEPTION HANDLING */
+    /* LESSON 40 - EXCEPTION HANDLING */
+
+    /*
+    public static void Main()
+    {
+        StreamReader s = null;
+        try
+        {
+            string filepath = @"..\sample files\log.txt";
+            s = new StreamReader(filepath);
+            WriteLine(s.ReadToEnd());
+        }
+        catch (FileNotFoundException e)
+        {
+            WriteLine("Please check if file {0} exist", e.FileName);
+            //WriteLine(e.Message);
+            //WriteLine();
+            //WriteLine();
+            //WriteLine(e.StackTrace);
+        }
+        catch (Exception ex) //cannot be first catch
+        {
+            Write(ex.Message);
+        }
+
+        if (s != null)
+        {
+            s.Close();
+        }
+
+        WriteLine("Finally block");
+        //finally
+        //{
+        //    if (s != null)
+        //    {
+        //        s.Close();
+        //    }
+        //
+        //    WriteLine("Finally block");
+        //}
+    }
+
+    */
+
+    /* LESSON 41 - INNER EXCEPTION */
+
+    /*
+    public static void Main()
+    {
+        try
+        {
+            try
+            {
+                WriteLine("enter first number");
+                int FN = Convert.ToInt32(ReadLine());
+
+                WriteLine("enter second number");
+                int SN = Convert.ToInt32(ReadLine());
+
+                int result = FN / SN;
+
+                WriteLine("Result = {0}", result);
+
+            }
+            catch (Exception e)
+            {
+                string filepath = @"..\sample files\log1.txt";
+
+                if (File.Exists(filepath))
+                {
+                    StreamWriter sw = new StreamWriter(filepath);
+                    sw.Write(e.GetType().Name);
+                    sw.WriteLine();
+                    sw.Write(e.Message);
+                    sw.Close();
+                    WriteLine("There is problem, try again");
+                }
+                else
+                {
+                    throw new FileNotFoundException(filepath + " does not exist", e);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            WriteLine("Current exception = {0}", ex.GetType().Name);
+            if (ex.InnerException != null)
+            {
+                WriteLine("Inner exception = {0}", ex.InnerException.GetType().Name);
+            }
+        }
+
+    */
+
+    /* LESSON 42 - CUSTOM EXCEPTION */
 
     public static void Main()
     {
 
     }
+
+
+    /* LESSON 43 - EXCEPTION HANDLING ABUSE */
 }
