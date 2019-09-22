@@ -10,6 +10,7 @@ using System.Runtime.Remoting.Services;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Permissions;
 using System.Threading;
+using System.Runtime.Serialization;
 using static System.Console;
 using PATA = ProjectA.TeamA;
 using PATB = ProjectA.TeamB;
@@ -1743,11 +1744,84 @@ delegate bool IsPromotable(Employee empl);
 
     /* LESSON 42 - CUSTOM EXCEPTION */
 
+    /*
     public static void Main()
     {
-
+        try
+        {
+            throw new UserAlreadyLoggedInException("User in logged in - no duplicate session is allowed");
+        }
+        catch (UserAlreadyLoggedInException ex)
+        {
+            WriteLine(ex.Message);
+        }
     }
 
+    [Serializable]
+    public class UserAlreadyLoggedInException : Exception
+    {
+        public UserAlreadyLoggedInException() : base()
+        {
+
+        }
+        public UserAlreadyLoggedInException(string message) : base(message)
+        {
+
+        }
+
+        public UserAlreadyLoggedInException(string message, Exception innerException) : base(message, innerException)
+        {
+
+        }
+
+        public UserAlreadyLoggedInException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+
+        }
+    }
+    */
 
     /* LESSON 43 - EXCEPTION HANDLING ABUSE */
+
+    /*
+    public static void Main()
+    {
+        try
+        {
+            WriteLine("Enter num1");
+            int numerator = Convert.ToInt32(ReadLine());
+            WriteLine("Enter num2");
+            int denominator = Convert.ToInt32(ReadLine());
+
+            int result = numerator / denominator;
+
+            WriteLine("result = {0}", result);
+        }
+        catch (FormatException)
+        {
+            WriteLine("Enter numbers");
+        }
+        catch (OverflowException)
+        {
+            WriteLine("enter number between {0} && {1}", Int32.MinValue, Int32.MaxValue);
+        }
+        catch (DivideByZeroException)
+        {
+            WriteLine("no 0");
+        }
+        catch (Exception ex)
+        {
+            WriteLine(ex.Message);
+        }
+    }
+    */
+
+    /* LESSON 44 - PREVENTING EXCEPTION HANDLING ABUSE */
+
+    public static void Main()
+    {
+        
+    }
+
+    /* LESSON 45 - WHY ENUMS*/
 }
