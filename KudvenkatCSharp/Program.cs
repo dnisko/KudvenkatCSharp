@@ -1818,10 +1818,178 @@ delegate bool IsPromotable(Employee empl);
 
     /* LESSON 44 - PREVENTING EXCEPTION HANDLING ABUSE */
 
+    /*
     public static void Main()
     {
-        
+        try
+        {
+            WriteLine("Enter num1");
+            int numerator;
+            bool IsNumeratorConversionSuccess = Int32.TryParse(ReadLine(), out numerator);
+
+            if (IsNumeratorConversionSuccess)
+            {
+                WriteLine("Enter num2");
+                int denominator;
+                bool IsDenominatorConversionSuccess = Int32.TryParse(ReadLine(), out denominator);
+
+                if (IsDenominatorConversionSuccess && denominator != 0)
+                {
+                    int result = numerator / denominator;
+                    WriteLine("result = {0}", result);
+                }
+                else
+                {
+                    if (denominator == 0)
+                    {
+                        WriteLine("Denominator cannot be 0");
+                    }
+                    else
+                    {
+                        WriteLine("Denominator should be a valid number between {0} and {1}", Int32.MinValue,
+                            Int32.MaxValue);
+                    }
+                }
+            }
+            else
+            {
+                WriteLine("Numerator should be a valid number between {0} and {1}", Int32.MinValue, Int32.MaxValue);
+            }
+        }
+        catch (Exception ex)
+        {
+            WriteLine(ex.Message);
+        }
     }
+*/
+
 
     /* LESSON 45 - WHY ENUMS*/
+
+    /*
+    public static void Main()
+    {
+        Customer[] customers = new Customer[3];
+
+        customers[0] = new Customer
+            {
+                Name = "Mark",
+                Gender = 1
+            };
+                customers[1] = new Customer
+            {
+                Name = "Mary",
+                Gender = 2
+            };
+            customers[2] = new Customer
+            {
+                Name = "Sam",
+                Gender = 0
+            };
+
+        foreach (Customer customer in customers)
+        {
+            WriteLine("Name = {0} && Gender = {1}", customer.Name, GetGender(customer.Gender));
+        }
+
+    }
+
+    public static string GetGender(int gender)
+    {
+        switch (gender)
+        {
+            case 0:
+                return "Unknown";
+            case 1:
+                return "Male";
+            case 2:
+                return "Female";
+            default:
+                return "Invalid data detected";
+        }
+    }
+
+    // 0 - Unknown
+    // 1 - Male
+    // 2 - Female
+    public class Customer
+    {
+        public string Name { get; set; }
+        public int Gender { get; set; }
+    }
+    */
+
+
+    /* LESSON 46 - ENUMS EXAMPLES*/
+
+    /*
+    public static void Main()
+    {
+        Customer[] customers = new Customer[3];
+
+        customers[0] = new Customer
+        {
+            Name = "Mark",
+            Gender = Gender.Male
+        };
+        customers[1] = new Customer
+        {
+            Name = "Mary",
+            Gender = Gender.Male
+        };
+        customers[2] = new Customer
+        {
+            Name = "Sam",
+            Gender = Gender.Unknown
+        };
+
+        foreach (Customer customer in customers)
+        {
+            WriteLine("Name = {0} && Gender = {1}", customer.Name, GetGender(customer.Gender));
+        }
+
+    }
+
+    public static string GetGender(Gender gender)
+    {
+        switch (gender)
+        {
+            case Gender.Unknown:
+                return "Unknown";
+            case Gender.Male:
+                return "Male";
+            case Gender.Female:
+                return "Female";
+            default:
+                return "Invalid data detected";
+        }
+    }
+
+    public enum Gender
+    {
+        Unknown,
+        Male,
+        Female
+    }
+
+    // 0 - Unknown
+    // 1 - Male
+    // 2 - Female
+    public class Customer
+    {
+        public string Name { get; set; }
+        public Gender Gender { get; set; }
+    }
+    */
+
+    /* LESSON 47 - ENUMS*/
+
+
+    public static void Main()
+    {
+
+    }
+
+
+    /* LESSON 48 - DIFFERENCE BETWEEN TYPES AND TYPE MEMBERS*/
 }
