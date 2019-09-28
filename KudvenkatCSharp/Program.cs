@@ -1864,7 +1864,7 @@ delegate bool IsPromotable(Employee empl);
 */
 
 
-    /* LESSON 45 - WHY ENUMS*/
+    /* LESSON 45 - WHY ENUMS */
 
     /*
     public static void Main()
@@ -1920,7 +1920,7 @@ delegate bool IsPromotable(Employee empl);
     */
 
 
-    /* LESSON 46 - ENUMS EXAMPLES*/
+    /* LESSON 46 - ENUMS EXAMPLES */
 
     /*
     public static void Main()
@@ -1982,14 +1982,190 @@ delegate bool IsPromotable(Employee empl);
     }
     */
 
-    /* LESSON 47 - ENUMS*/
+    /* LESSON 47 - ENUMS */
 
+    /*
+    public static void Main()
+    {
+        short[] Values = (short[])Enum.GetValues(typeof(Gender));//short instead int
+
+        foreach (short value in Values)
+        {
+            WriteLine(value);
+        }
+
+        string[] Names = Enum.GetNames(typeof(Gender));
+
+        foreach (string name in Names)
+        {
+            WriteLine(name);
+        }
+
+        Gender gender = (Gender) 3;
+        short Num = (short) Gender.Unknown;
+
+
+        Gender gender1 = (Gender) Season.Spring;
+    }
+
+    public enum Gender : short
+    {
+        //if not specified, default is 0, 1, 2..
+        Unknown = 1,
+        Male = 5,
+        Female = 23
+    }
+
+    public enum Season
+    {
+        Winter = 1,
+        Spring = 2,
+        Summer = 3
+    }
+
+    // 0 - Unknown
+    // 1 - Male
+    // 2 - Female
+    public class Customer
+    {
+        public string Name { get; set; }
+        public Gender Gender { get; set; }
+
+    }
+    */
+
+    /* LESSON 48 - DIFFERENCE BETWEEN TYPES AND TYPE MEMBERS */
+
+    /*
+     
+     
+    public static void Main()
+    {
+
+    }
+
+    #region Fields
+
+    public class Customer
+    {
+        private int _id;
+        private string _firstName;
+        private string _lastName;
+
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+        public string FirstName
+        {
+            get { return _firstName; }
+            set { _firstName = value; }
+        }
+
+        public string LastName
+        {
+            get { return _lastName; }
+            set { _lastName = value; }
+        }
+        #endregion
+
+        #region Methods
+
+        public string GetFullName()
+        {
+            return this._firstName + " " + this.LastName;
+        }
+        #endregion
+
+    }
+    */
+
+    /* LESSON 49 - ACCESS MODIFIERS */
+
+    /*
+
+    //5 different access modifiers:
+    //1. Private - only available whit in the containing type
+    //2. Protected - available whit in the containing type and to the types that derive from the containing type
+    //3. Internal - available anywhere whit in the containing assembly
+    //4. Protected Internal - available anywhere with in the containing assembly and from within a derived class in any another assembly
+    //5. Public - available any where
+
+    #region Private
+    public class CustomerPrivate
+    {
+        private int _id;
+
+        public int ID
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+    }
+    #endregion
+
+    #region Protected
+    public class CustomerProtected
+    {
+        protected int ID;
+    }
+
+    public class CorporateCustomer : CustomerProtected
+    {
+        public void PrintID()
+        {
+            CorporateCustomer CC = new CorporateCustomer();
+            CC.ID = 101;
+
+            //base.ID
+            //this.ID
+        }
+    }
+    #endregion
+
+    #region Internal
+    public class CustomerInternal
+    {
+        protected int ID;
+    }
+    #endregion
+    public class MainClass
+    {
+        public static void Main()
+        {
+            CustomerPrivate C1 = new CustomerPrivate();
+            //WriteLine(C1._id);// _id is private
+            WriteLine(C1.ID);//ID is public
+
+            CustomerProtected C2 = new CustomerProtected();
+            //WriteLine(C2.ID);//ID is protected
+
+        }
+    }
+    */
+
+    /* LESSON 50 - INTERNAL AND PROTECTED INTERNAL ACCESS MODIFIERS */
+
+    /*
+     * AssemblyOne && AssemblyTwo
+     */
+
+    /* LESSON 51 - ACCESS MODIFIERS FOR TYPES */
+
+    /*
+     * AssemblyOne && AssemblyTwo
+     */
+
+    /* LESSON 52 - ATTRIBUTES */
 
     public static void Main()
     {
 
     }
 
+    /* LESSON 53 - REFLECTION */
 
-    /* LESSON 48 - DIFFERENCE BETWEEN TYPES AND TYPE MEMBERS*/
+
 }
