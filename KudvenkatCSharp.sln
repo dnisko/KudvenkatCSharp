@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectA.TeamA", "ProjectA.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectA.TeamB", "ProjectA.TeamB\ProjectA.TeamB.csproj", "{AD430C6A-9BE5-447E-A882-466E08C7182C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyOne", "AssemblyOne\AssemblyOne.csproj", "{35338F21-65E5-48FE-8BC8-2F7DFD3F3853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyOne", "AssemblyOne\AssemblyOne.csproj", "{35338F21-65E5-48FE-8BC8-2F7DFD3F3853}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyTwo", "AssemblyTwo\AssemblyTwo.csproj", "{AAE285AF-1BF7-4057-B0F1-98C433EDA5D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyTwo", "AssemblyTwo\AssemblyTwo.csproj", "{AAE285AF-1BF7-4057-B0F1-98C433EDA5D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflection", "Reflection\Reflection.csproj", "{8A8B58D3-7346-4938-BE24-82EFC28D9EDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{AAE285AF-1BF7-4057-B0F1-98C433EDA5D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAE285AF-1BF7-4057-B0F1-98C433EDA5D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAE285AF-1BF7-4057-B0F1-98C433EDA5D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A8B58D3-7346-4938-BE24-82EFC28D9EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A8B58D3-7346-4938-BE24-82EFC28D9EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A8B58D3-7346-4938-BE24-82EFC28D9EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A8B58D3-7346-4938-BE24-82EFC28D9EDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
