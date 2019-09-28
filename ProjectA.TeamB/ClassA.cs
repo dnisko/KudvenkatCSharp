@@ -7,6 +7,7 @@ namespace ProjectA.TeamB
         public static void Print()
         {
             Console.WriteLine("Team B Print Method");
+
         }
     }
 }
