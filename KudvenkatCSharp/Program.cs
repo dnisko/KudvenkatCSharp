@@ -2365,7 +2365,8 @@ delegate bool IsPromotable(Employee empl);
 
     public static void Main()
     {
-
+        int i = 10;
+        int j = 10;
     }
 
     /* LESSON 59 - DIFFERENCE BETWEEN Convert ToString AND ToString */
