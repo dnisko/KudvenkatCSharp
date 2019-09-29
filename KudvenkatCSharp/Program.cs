@@ -2506,10 +2506,11 @@ delegate bool IsPromotable(Employee empl);
 
     /* LESSON 62 - CREATING PARTIAL CLASSES */
 
-    public static void Main()
-    {
-
-    }
+    /*
+      *
+      * PartialClasses WebForms
+      *
+      */
 
     /* LESSON 63 - PARTIAL METHODS */
 
