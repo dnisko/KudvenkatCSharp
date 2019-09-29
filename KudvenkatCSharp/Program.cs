@@ -2515,11 +2515,18 @@ delegate bool IsPromotable(Employee empl);
 
     /* LESSON 63 - PARTIAL METHODS */
 
+    /*
     public static void Main()
     {
         SamplePartialClass SPC = new SamplePartialClass();
         SPC.PublicMethod();
     }
+    */
 
     /* LESSON 64 - HOW AND WHERE ARE INDEXERS USED */
+
+    public static void Main()
+    {
+
+    }
 }
