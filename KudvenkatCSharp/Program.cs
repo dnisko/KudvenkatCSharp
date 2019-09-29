@@ -12,6 +12,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Security.Permissions;
 using System.Threading;
 using System.Runtime.Serialization;
+using System.Text;
 using static System.Console;
 using PATA = ProjectA.TeamA;
 using PATB = ProjectA.TeamB;
@@ -2363,14 +2364,154 @@ delegate bool IsPromotable(Employee empl);
 
     /* LESSON 58 - WHY SHOULD YOU OVERRIDE Equals METHOD */
 
+    /*
     public static void Main()
     {
         int i = 10;
         int j = 10;
+
+        WriteLine(i == j);
+        WriteLine(i.Equals(j));
+
+        Direction d1 = Direction.East;
+        Direction d2 = Direction.West;
+
+        WriteLine(d1 == d2);
+        WriteLine(d1.Equals(d2));
+
+        Customer C1 = new Customer();
+        C1.FirstName = "dino";
+        C1.LastName = "nik";
+
+        Customer C2 = C1;
+
+        WriteLine(C1== C2);
+        WriteLine(C1.Equals(C2));
+
+        //reference equality, returns false
+        Customer C3 = new Customer();
+        C3.FirstName = "dino";
+        C3.LastName = "nik";
+
+        Customer C4 = new Customer();
+        C4.FirstName = "dino";
+        C4.LastName = "nik";
+
+        WriteLine(C3 == C4);
+        WriteLine(C3.Equals(C4));
+
     }
 
-    /* LESSON 59 - DIFFERENCE BETWEEN Convert ToString AND ToString */
+    public enum Direction
+    {
+        East = 1,
+        West = 2,
+        North = 3,
+        South = 4
+    }
 
+    public class Customer
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (!(obj is Customer))
+            {
+                return false;
+            }
+
+            return this.FirstName == ((Customer)obj).FirstName && 
+                   this.LastName == ((Customer)obj).LastName;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.FirstName.GetHashCode() ^ this.LastName.GetHashCode();
+        }
+    }
+    */
+
+    /* LESSON 59 - DIFFERENCE BETWEEN Convert.ToString() AND ToString() */
+
+    /*
+    public static void Main()
+    {
+        Customer C1 = null;//new Customer();
+        string str;
+        str = C1.ToString(); //throws NULL reference exception
+        //str= Convert.ToString(C1); //handles and returns null
+        WriteLine(str);
+    }
+
+    public class Customer
+    {
+        public string Name { get; set; }
+    }
+    */
 
     /* LESSON 60 - DIFFERENCE BETWEEN String AND StringBuilder */
+
+    /*
+    public static void Main()
+    {
+        //immutable - creates new object every time you add text to string
+        string userString = "C#";
+        userString += " Video";
+        userString += " Tutorial";
+        userString += " for";
+        userString += " beginners";
+        WriteLine(userString);
+
+        //mutable - adds text to the same object
+        StringBuilder stringbld = new StringBuilder("C#");
+        stringbld.Append(" video");
+        stringbld.Append(" tutorial");
+        stringbld.Append(" for");
+        stringbld.Append(" beginners");
+        WriteLine(stringbld.ToString());
+
+        //string txtImmutable = string.Empty;
+
+        //for (int i = 1; i <= 10000; i++)
+        //{
+        //    txtImmutable += i.ToString() + " ";
+        //}
+        //WriteLine(txtImmutable);
+
+        StringBuilder txtMutable = new StringBuilder();
+
+        for (int i = 1; i <= 10000; i++)
+        {
+            txtMutable.Append(i.ToString() + " ");
+        }
+        WriteLine(txtMutable);
+    }
+    */
+
+    /* LESSON 61 - PARTIAL CLASSES */
+
+    /*
+     *
+     * PartialClasses WebForms
+     *
+     */
+
+
+    /* LESSON 62 - CREATING PARTIAL CLASSES */
+
+    public static void Main()
+    {
+
+    }
+
+    /* LESSON 63 - PARTIAL METHODS */
+
+    /* LESSON 64 - HOW AND WHERE ARE INDEXERS USED */
 }
