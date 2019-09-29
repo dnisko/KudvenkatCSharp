@@ -13,6 +13,7 @@ using System.Security.Permissions;
 using System.Threading;
 using System.Runtime.Serialization;
 using System.Text;
+using KudvenkatCSharp;
 using static System.Console;
 using PATA = ProjectA.TeamA;
 using PATB = ProjectA.TeamB;
@@ -2513,6 +2514,12 @@ delegate bool IsPromotable(Employee empl);
       */
 
     /* LESSON 63 - PARTIAL METHODS */
+
+    public static void Main()
+    {
+        SamplePartialClass SPC = new SamplePartialClass();
+        SPC.PublicMethod();
+    }
 
     /* LESSON 64 - HOW AND WHERE ARE INDEXERS USED */
 }
