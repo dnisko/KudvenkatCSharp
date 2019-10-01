@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Reflection;
@@ -17,6 +18,7 @@ using KudvenkatCSharp;
 using static System.Console;
 using PATA = ProjectA.TeamA;
 using PATB = ProjectA.TeamB;
+using System.Linq;
 //using PATA = ProjectA.TeamA;
 //using PATB = ProjectA.TeamB;
 
@@ -2550,10 +2552,306 @@ delegate bool IsPromotable(Employee empl);
 
     /* LESSON 67 - OPTIONAL PARAMETERS */
 
+    /*
+    //4 ways of making method parameters optional:
+    //1. Use parameter arrays
+    //2. Method overloading
+    //3. Specify parameter defaults
+    //4. Use OptionalAttribute that is presented in System.Runtime.InteropServices namespace
+
+    //PARAMETER ARRAYS
+    public static void Main()
+    {
+        AddNumbers(10, 20, 30, 40, 50);//new object[] {30,40,50}
+    }
+
+    public static void AddNumbers(int firstNumber, int secondNumber, params object[] restOfNumbers)
+    {
+        int result = firstNumber + secondNumber;
+        if (restOfNumbers != null)
+        {
+            foreach (int i in restOfNumbers)
+            {
+                result += i;
+            }
+        }
+
+        WriteLine("Sum = " + result);
+    }
+    */
+
+    /* LESSON 68 - MAKING METHOD PARAMETERS OPTIONAL USING METHOD OVERLOADING */
+
+    /*
+    //METHOD OVERLOADING
+    public static void Main()
+    {
+        AddNumbers(10, 20);
+        AddNumbers(10, 20, new int[] {30, 40, 50});
+    }
+
+    public static void AddNumbers(int firstNumber, int secondNumber)
+    {
+        AddNumbers(firstNumber, secondNumber, null);
+    }
+
+    public static void AddNumbers(int firstNumber, int secondNumber, int[] restOfNumbers)
+    {
+        int result = firstNumber + secondNumber;
+        if (restOfNumbers != null)
+        {
+            foreach (int i in restOfNumbers)
+            {
+                result += i;
+            }
+        }
+        WriteLine("Sum = " + result);
+    }
+    */
+
+    /* LESSON 69 - MAKING METHOD PARAMETERS BY SPECIFYING PARAMETER DEFAULTS */
+
+    /*
+    //SPECIFY PARAMETER DEFAULTS
+    public static void Main()
+    {
+        AddNumbers(10, 20);
+        AddNumbers(10, 20, new[] {30, 40, 50});
+
+        Test(1, c: 2);
+    }
+
+    public static void AddNumbers(int firstNumber, int secondNumber, int[] restOfNumbers = null)
+    {
+        int result = firstNumber + secondNumber;
+        if (restOfNumbers != null)
+        {
+            foreach (int i in restOfNumbers)
+            {
+                result += i;
+            }
+        }
+        WriteLine("Sum = " + result.ToString());
+    }
+
+    //NAMED PARAMETERS
+    public static void Test(int a, int b = 10, int c = 20)
+    {
+        WriteLine("a = " + a);
+        WriteLine("b = " + b);
+        WriteLine("c = " + c);
+    }
+    */
+
+    /* LESSON 70 - MAKING METHOD PARAMETERS BY USING OptionalAttribute */
+
+    /*
+    //OptionalAttribute
+    public static void Main()
+    {
+        AddNumbers(10, 20);
+        AddNumbers(10, 20, new[] {30, 40, 50});
+    }
+    public static void AddNumbers(int firstNumber, int secondNumber, [Optional] int[] restOfNumbers)
+    {
+        int result = firstNumber + secondNumber;
+        if (restOfNumbers != null)
+        {
+            foreach (int i in restOfNumbers)
+            {
+                result += i;
+            }
+        }
+        WriteLine("Sum = " + result.ToString());
+    }
+    */
+
+    /* LESSON 71 - CODE SNIPPETS IN VISUAL STUDIO */
+
+    /*
+    //Shortcut - CTRL K + X (CTRL K + S = SurroundWith)
+    //RightClick - InsertSnippet
+    //Edit - Intellisense - InsertSnippet
+    //Type "for" and press TAB x2
+    //Can be used in any languages (html, C#, C++, MVC...)
+    //Tools - Code Snippets Manager - CTRL + K, CTRL + B
+    public static void Main()
+    {
+        for (int i = 0; i < length; i++)
+        {
+            for (int i = 0; i < length; i++)
+            {
+
+            } 
+        }
+
+    }
+    */
+
+    /* LESSON 72 - WHAT IS DICTIONARY - PART 1 */
+
+    /*
+    public static void Main()
+    {
+        Customer customer1 = new Customer()
+        {
+            ID = 101,
+            Name = "Mark",
+            Salary = 5000
+        };
+
+        Customer customer2 = new Customer()
+        {
+            ID = 110,
+            Name = "Pam",
+            Salary = 6500
+        };
+
+        Customer customer3 = new Customer()
+        {
+            ID = 119,
+            Name = "John",
+            Salary = 3500
+        };
+
+        Dictionary<int,Customer> dictionaryCustomers = new Dictionary<int, Customer>();
+        dictionaryCustomers.Add(customer1.ID,customer1);
+        dictionaryCustomers.Add(customer2.ID, customer2);
+        dictionaryCustomers.Add(customer3.ID, customer3);
+        ////dictionaryCustomers.Add(customer1.ID, customer1);//cannot add, already exist
+        //if (!dictionaryCustomers.ContainsKey(customer1.ID))
+        //{
+        //    dictionaryCustomers.Add(customer1.ID, customer1);
+        //}
+
+        if (dictionaryCustomers.ContainsKey(135))
+        {
+            Customer cust = dictionaryCustomers[135]; //doesn't exist
+        }
+
+        //Customer customer119 = dictionaryCustomers[119];
+
+        //foreach (Customer cust in dictionaryCustomers.Values)
+        ////(int key in dictionaryCustomers.Keys)
+
+        ////(KeyValuePair<int,Customer> customerKeyValuePair in dictionaryCustomers)//var customerKeyValuePair in dictionaryCustomers
+        //{
+        //    WriteLine("ID = {0}, Name = {1}, Salary = {2}\n", cust.ID, cust.Name, cust.Salary);
+
+        //    //WriteLine(key);
+
+        //    //WriteLine("Key = {0},", customerKeyValuePair.Key);
+        //    //Customer cust = customerKeyValuePair.Value;
+        //    //WriteLine("ID = {0}, Name = {1}, Salary = {2}\n", cust.ID, cust.Name, cust.Salary);
+
+
+
+        //}
+    }
+    public class Customer
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Salary { get; set; }
+    }
+    */
+
+    /* LESSON 73 - WHAT IS DICTIONARY - PART 2 */
+
+    /*
+    public static void Main()
+    {
+        Customer customer1 = new Customer()
+        {
+            ID = 101,
+            Name = "Mark",
+            Salary = 5000
+        };
+
+        Customer customer2 = new Customer()
+        {
+            ID = 110,
+            Name = "Pam",
+            Salary = 6500
+        };
+
+        Customer customer3 = new Customer()
+        {
+            ID = 119,
+            Name = "John",
+            Salary = 3500
+        };
+
+        //Customer[] customers = new Customer[3];
+        //customers[0] = customer1;
+        //customers[1] = customer2;
+        //customers[2] = customer3;
+
+        //Dictionary<int, Customer> dictionaryCustomers = new Dictionary<int, Customer>();
+        //dictionaryCustomers.Add(customer1.ID, customer1);
+        //dictionaryCustomers.Add(customer2.ID, customer2);
+        //dictionaryCustomers.Add(customer3.ID, customer3);
+
+        //Customer cust;
+
+        ////TryGetValue - if not sure what is the key
+        //if (dictionaryCustomers.TryGetValue(150, out cust))
+        //{
+        //    WriteLine("Id = {0}, Name = {1}, Salary = {2}", cust.ID, cust.Name, cust.Salary);
+        //}
+        //else
+        //{
+        //    WriteLine("Key not found");
+        //}
+
+        ////Count - total count of all items
+        ////using it as Linq method
+        //WriteLine("Total items = {0}", dictionaryCustomers.Count(kvp => kvp.Value.Salary > 4000)); //dictionaryCustomers.Count);
+
+        ////Remove
+        //dictionaryCustomers.Remove(110);//removes specific key
+        //dictionaryCustomers.Clear();//removes all
+
+        //convert array into a dictionary
+
+
+        //Customer[] customers = new Customer[3];
+        //customers[0] = customer1;
+        //customers[1] = customer2;
+        //customers[2] = customer3;
+
+        List<Customer> customers = new List<Customer>();
+        customers.Add(customer1);
+        customers.Add(customer2);
+        customers.Add(customer3);
+
+        Dictionary<int, Customer> dict = customers.ToDictionary(cust => cust.ID, cust => cust);
+
+        foreach (KeyValuePair<int, Customer> kvp in dict)
+        {
+            WriteLine("Key = {0}", kvp.Key);
+            Customer cust = kvp.Value;
+            WriteLine("ID = {0}, Name = {1}, Salary = {2}", cust.ID, cust.Name, cust.Salary);
+        }
+
+
+    }
+    public class Customer
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Salary { get; set; }
+    }
+    */
+
+    /* LESSON 74 - LIST COLLECTION CLASS */
+
+
     public static void Main()
     {
 
     }
 
-    /* LESSON 68 - MAKING METHOD PARAMETERS OPTIONAL USING METHOD OVERLOADING */
+    /* LESSON 75 - WORKING WITH GENERIC LIST CLASS AND RANGES */
 }
+
