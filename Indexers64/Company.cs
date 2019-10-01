@@ -50,6 +50,20 @@ namespace Indexers64
             get { return listEmployees.FirstOrDefault(emp => emp.EmployeeId == EmployeeId).Name; }
             set { listEmployees.FirstOrDefault(emp => emp.EmployeeId == EmployeeId).Name = value; }
         }
-        
+
+        public string this[string Gender]
+        {
+            get { return listEmployees.Count(emp => emp.Gender == Gender).ToString(); }
+            set {
+                foreach (Employee emp in listEmployees)
+                {
+                    if (emp.Gender == Gender)
+                    {
+                        emp.Gender = value;
+                    }
+                }
+            }
+        }
+
     }
 }

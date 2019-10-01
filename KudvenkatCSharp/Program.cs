@@ -2527,17 +2527,33 @@ delegate bool IsPromotable(Employee empl);
 
     /*
      *
-     * Indexers64
+     * Indexers
      *
      */
 
     /* LESSON 65 - INDEXERS */
+
+    /*
+     *
+     * Indexers
+     *
+     */
+
+
+    /* LESSON 66 - OVERLOADING INDEXERS */
+
+    /*
+     *
+     * Indexers
+     *
+     */
+
+    /* LESSON 67 - OPTIONAL PARAMETERS */
 
     public static void Main()
     {
 
     }
 
-
-    /* LESSON 66 - OVERLOADING INDEXERS */
+    /* LESSON 68 - MAKING METHOD PARAMETERS OPTIONAL USING METHOD OVERLOADING */
 }
