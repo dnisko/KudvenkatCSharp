@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Indexers64.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="64.aspx.cs" Inherits="Indexers64.WebForm1" %>
 
 <!DOCTYPE html>
 

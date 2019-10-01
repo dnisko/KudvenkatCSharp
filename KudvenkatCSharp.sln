@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflection", "Reflection\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartialClasses", "PartialClasses\PartialClasses.csproj", "{516EAC57-6A6E-483B-82B7-431D861C934D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indexers64", "Indexers64\Indexers64.csproj", "{A2C76FAE-456B-46CE-B486-ED1A28AE807F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indexers", "Indexers64\Indexers.csproj", "{A2C76FAE-456B-46CE-B486-ED1A28AE807F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
