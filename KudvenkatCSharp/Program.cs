@@ -2761,60 +2761,7 @@ delegate bool IsPromotable(Employee empl);
     /*
     public static void Main()
     {
-        Customer customer1 = new Customer()
-        {
-            ID = 101,
-            Name = "Mark",
-            Salary = 5000
-        };
-
-        Customer customer2 = new Customer()
-        {
-            ID = 110,
-            Name = "Pam",
-            Salary = 6500
-        };
-
-        Customer customer3 = new Customer()
-        {
-            ID = 119,
-            Name = "John",
-            Salary = 3500
-        };
-
-        //Customer[] customers = new Customer[3];
-        //customers[0] = customer1;
-        //customers[1] = customer2;
-        //customers[2] = customer3;
-
-        //Dictionary<int, Customer> dictionaryCustomers = new Dictionary<int, Customer>();
-        //dictionaryCustomers.Add(customer1.ID, customer1);
-        //dictionaryCustomers.Add(customer2.ID, customer2);
-        //dictionaryCustomers.Add(customer3.ID, customer3);
-
-        //Customer cust;
-
-        ////TryGetValue - if not sure what is the key
-        //if (dictionaryCustomers.TryGetValue(150, out cust))
-        //{
-        //    WriteLine("Id = {0}, Name = {1}, Salary = {2}", cust.ID, cust.Name, cust.Salary);
-        //}
-        //else
-        //{
-        //    WriteLine("Key not found");
-        //}
-
-        ////Count - total count of all items
-        ////using it as Linq method
-        //WriteLine("Total items = {0}", dictionaryCustomers.Count(kvp => kvp.Value.Salary > 4000)); //dictionaryCustomers.Count);
-
-        ////Remove
-        //dictionaryCustomers.Remove(110);//removes specific key
-        //dictionaryCustomers.Clear();//removes all
-
-        //convert array into a dictionary
-
-
+        2
         //Customer[] customers = new Customer[3];
         //customers[0] = customer1;
         //customers[1] = customer2;
@@ -2844,14 +2791,173 @@ delegate bool IsPromotable(Employee empl);
     }
     */
 
-    /* LESSON 74 - LIST COLLECTION CLASS */
+    /* LESSON 74 - LIST COLLECTION CLASS - PART 1*/
 
+    /*
+    public static void Main()
+    {
+        Customer customer1 = new Customer()
+        {
+            ID = 101,
+            Name = "Mark",
+            Salary = 6000
+        };
+
+        Customer customer2 = new Customer()
+        {
+            ID = 110,
+            Name = "Pam",
+            Salary = 6500
+        };
+
+        Customer customer3 = new Customer()
+        {
+            ID = 119,
+            Name = "John",
+            Salary = 3500
+        };
+
+        List<Customer> customers = new List<Customer>(2);
+        //can only add only from Customer class, or a class that inherits form Customer
+        customers.Add(customer1);
+        customers.Add(customer2);
+        customers.Add(customer3);
+
+        //SavingsCustomer sc = new SavingsCustomer();
+        //customers.Add(sc);
+
+        //customers.Insert(0, customer3);
+
+        Customer c = customers[0];
+
+        foreach (Customer c1 in customers)
+        {
+            WriteLine("ID = {0}, Name = {1}, Salary = {2}", c1.ID, c1.Name, c1.Salary);
+        }
+        WriteLine("\n");
+
+        for (int i = 0; i < customers.Count; i++)
+        {
+            Customer c2 = customers[i];
+            WriteLine("ID = {0}, Name = {1}, Salary = {2}", c2.ID, c2.Name, c2.Salary);
+        }
+
+        //WriteLine("\n"+customers.IndexOf(customer3));//first index
+        //WriteLine("\n" + customers.IndexOf(customer3,1));//starting from index 1
+        //WriteLine("\n" + customers.IndexOf(customer3,1,2));//lockup 2 items
+
+        if (customers.Contains(customer3))
+        {
+            WriteLine("Customer3 objects exist in the list");
+        }
+        else
+        {
+            WriteLine("Customer3 objects does not exist in the list");
+        }
+        WriteLine("\n");
+
+        if (customers.Exists(cust =>cust.Name.StartsWith("Z")))
+        {
+            WriteLine("Customer3 objects exist in the list");
+        }
+        else
+        {
+            WriteLine("Customer3 objects does not exist in the list");
+        }
+        WriteLine("\n");
+
+        Customer findCustomer = customers.Find(cust => cust.Salary > 4000);
+        WriteLine("ID = {0}, Name = {1}, Salary = {2}", findCustomer.ID, findCustomer.Name, findCustomer.Salary);
+        WriteLine("\n");
+
+        Customer findLastCustomer = customers.FindLast(cust => cust.Salary > 4000);
+        WriteLine("ID = {0}, Name = {1}, Salary = {2}", findLastCustomer.ID, findLastCustomer.Name, findLastCustomer.Salary);
+        WriteLine("\n");
+
+        List<Customer> findAllCustomer = customers.FindAll(cust => cust.Salary > 4000);
+        foreach (Customer FAC in findAllCustomer)
+        {
+            WriteLine("ID = {0}, Name = {1}, Salary = {2}", FAC.ID, FAC.Name, FAC.Salary);
+        }
+        WriteLine("\n");
+
+        int index = customers.FindIndex(cust => cust.Salary > 5000);
+        WriteLine("index = {0}",index);
+        WriteLine("\n");
+
+        int lastIndex = customers.FindLastIndex(cust => cust.Salary > 5000);
+        WriteLine("index = {0}", lastIndex);
+        WriteLine("\n");
+
+        Customer[] customerArray=new Customer[3];
+        customerArray[0] = customer1;
+        customerArray[1] = customer2;
+        customerArray[2] = customer3;
+
+        List<Customer> listCustomer = customerArray.ToList();
+        foreach (Customer cust in listCustomer)
+        {
+            WriteLine("ID = {0}, Name = {1}, Salary = {2}", cust.ID, cust.Name, cust.Salary);
+        }
+        WriteLine("\n");
+
+        List<Customer> listToArray = new List<Customer>();
+        listToArray.Add(customer1);
+        listToArray.Add(customer2);
+        listToArray.Add(customer3);
+
+        Customer[] LTA = listToArray.ToArray();
+        foreach (Customer cust in LTA)
+        {
+            WriteLine("ID = {0}, Name = {1}, Salary = {2}", cust.ID, cust.Name, cust.Salary);
+        }
+        WriteLine("\n");
+
+        Dictionary<int, Customer> toDictionary = listToArray.ToDictionary(x => x.ID);
+        foreach (KeyValuePair<int,Customer> kvp in toDictionary)
+        {
+            WriteLine("Key = {0}", kvp.Key);
+            Customer TD = kvp.Value;
+            WriteLine("ID = {0}, Name = {1}, Salary = {2}", TD.ID, TD.Name, TD.Salary);
+        }
+    }
+
+    public class Customer
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Salary { get; set; }
+
+    }
+
+    public class SavingsCustomer : Customer
+    {
+
+    }
+
+    */
+
+    /* LESSON 75 - LIST COLLECTION CLASS - PART 2 */
+
+    /*
+     *
+     * SAME CODE; IN LESSON 74
+     *
+     */
+
+    /* LESSON 76 - WORKING WITH GENERIC LIST CLASS AND RANGES */
 
     public static void Main()
     {
 
     }
 
-    /* LESSON 75 - WORKING WITH GENERIC LIST CLASS AND RANGES */
+    /* LESSON 77 - SORT A LIST OF SIMPLE TYPES */
+
+    /* LESSON 78 - SORT A LIST OF COMPLEX TYPES */
+
+    /* LESSON 79 - SORT A LIST OF COMPLEX TYPES USING COMPARISON DELEGATE */
+
+
 }
 
