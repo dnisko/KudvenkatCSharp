@@ -3375,12 +3375,111 @@ delegate bool IsPromotable(Employee empl);
 
     /* LESSON 82 - GENERIC QUEUE COLLECTION CLASS */
 
+    /*
+    public static void Main()
+    {
+        Customer customer1 = new Customer()
+        {
+            ID = 101,
+            Name = "Mark",
+            Gender = "Male"
+        };
+
+        Customer customer2 = new Customer()
+        {
+            ID = 102,
+            Name = "Pam",
+            Gender = "Female"
+        };
+
+        Customer customer3 = new Customer()
+        {
+            ID = 103,
+            Name = "John",
+            Gender = "Male"
+        };
+
+        Customer customer4 = new Customer()
+        {
+            ID = 104,
+            Name = "Ken",
+            Gender = "Male"
+        };
+
+        Customer customer5 = new Customer()
+        {
+            ID = 105,
+            Name = "Valarie",
+            Gender = "Female"
+        };
+
+        Queue<Customer> queueCustomers = new Queue<Customer>();
+        queueCustomers.Enqueue(customer1);
+        queueCustomers.Enqueue(customer2);
+        queueCustomers.Enqueue(customer3);
+        queueCustomers.Enqueue(customer4);
+        queueCustomers.Enqueue(customer5);
+
+        //Customer c1 = queueCustomers.Dequeue();
+        //WriteLine(c1.ID + " - " + c1.Name);
+        //WriteLine("Total items in the queue = " +queueCustomers.Count);
+
+        //Customer c2 = queueCustomers.Dequeue();
+        //WriteLine(c2.ID + " - " + c2.Name);
+        //WriteLine("Total items in the queue = " + queueCustomers.Count);
+
+        //Customer c3 = queueCustomers.Dequeue();
+        //WriteLine(c3.ID + " - " + c3.Name);
+        //WriteLine("Total items in the queue = " + queueCustomers.Count);
+
+        //Customer c4 = queueCustomers.Dequeue();
+        //WriteLine(c4.ID + " - " + c4.Name);
+        //WriteLine("Total items in the queue = " + queueCustomers.Count);
+
+        //Customer c5 = queueCustomers.Dequeue();
+        //WriteLine(c5.ID + " - " + c5.Name);
+        //WriteLine("Total items in the queue = " + queueCustomers.Count);
+
+        //foreach (Customer c in queueCustomers)
+        //{
+        //    WriteLine(c.ID + " - " + c.Name);
+        //    WriteLine("Total items in the queue = " + queueCustomers.Count);
+        //}
+
+        Customer c = queueCustomers.Peek();
+        WriteLine(c.ID + " - " + c.Name);
+        WriteLine("Total items in the queue = " + queueCustomers.Count);
+
+        //still getting the same object, because is on the start in the queue
+        Customer c1 = queueCustomers.Peek();
+        WriteLine(c1.ID + " - " + c1.Name);
+        WriteLine("Total items in the queue = " + queueCustomers.Count);
+
+        if (queueCustomers.Contains(customer1))
+        {
+            WriteLine("Customer1 exist");
+        }
+        else
+        {
+            WriteLine("Customer1 does not exist");
+        }
+
+    }
+
+    public class Customer
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Gender { get; set; }
+    }
+    */
+
+    /* LESSON 83 - GENERIC STACK COLLECTION CLASS */
+
     public static void Main()
     {
 
     }
-
-    /* LESSON 83 - GENERIC STACK COLLECTION CLASS */
 
     /* LESSON 84 - REAL TIME EXAMPLE OF QUEUE COLLECTION CLASS */
 }
