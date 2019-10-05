@@ -2947,17 +2947,321 @@ delegate bool IsPromotable(Employee empl);
 
     /* LESSON 76 - WORKING WITH GENERIC LIST CLASS AND RANGES */
 
+    /*
+    public static void Main()
+    {
+        Customer customer1 = new Customer()
+        {
+            ID = 101,
+            Name = "Mark",
+            Salary = 4000,
+            Type = "RetailCustomer"
+        };
+
+        Customer customer2 = new Customer()
+        {
+            ID = 102,
+            Name = "Pam",
+            Salary = 7000,
+            Type = "RetailCustomer"
+        };
+
+        Customer customer3 = new Customer()
+        {
+            ID = 103,
+            Name = "Rob",
+            Salary = 5500,
+            Type = "RetailCustomer"
+        };
+        Customer customer4 = new Customer()
+        {
+            ID = 104,
+            Name = "John",
+            Salary = 6500,
+            Type = "CorporateCustomer"
+        };
+        Customer customer5 = new Customer()
+        {
+            ID = 105,
+            Name = "Sam",
+            Salary = 3500,
+            Type = "CorporateCustomer"
+        };
+
+        List<Customer> listRetailCustomers = new List<Customer>();
+        listRetailCustomers.Add(customer1);
+        listRetailCustomers.Add(customer2);
+        listRetailCustomers.Add(customer3);
+
+        List<Customer> listCorporateCustomers = new List<Customer>();
+        listCorporateCustomers.Add(customer4);
+        listCorporateCustomers.Add(customer5);
+
+        //listRetailCustomers.AddRange(listCorporateCustomers);
+
+        //foreach (Customer c in listRetailCustomers)
+        //{
+        //    WriteLine("ID = {0}, Name = {1}, Salary = {2}, Type = {3}", c.ID, c.Name, c.Salary, c.Type);
+        //}
+        //WriteLine("\n");
+
+        //List<Customer> GRC = listRetailCustomers.GetRange(0, 3);
+        //foreach (Customer c in GRC)
+        //{
+        //    WriteLine("ID = {0}, Name = {1}, Salary = {2}, Type = {3}", c.ID, c.Name, c.Salary, c.Type);
+        //}
+        //WriteLine("\n");
+
+        listRetailCustomers.InsertRange(3, listCorporateCustomers);
+
+        //listRetailCustomers.Remove(customer1);
+
+        //listRetailCustomers.RemoveAt(4);
+
+        //listRetailCustomers.RemoveAll(x => x.Type == "CorporateCustomer");
+
+        listRetailCustomers.RemoveRange(0,3);
+        foreach (Customer c in listRetailCustomers)
+        {
+            WriteLine("ID = {0}, Name = {1}, Salary = {2}, Type = {3}", c.ID, c.Name, c.Salary, c.Type);
+        }
+    }
+
+    public class Customer
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Salary { get; set; }
+        public string Type { get; set; }
+
+    }
+    */
+
+    /* LESSON 77 - SORT A LIST OF SIMPLE TYPES */
+
+    /*
+    public static void Main()
+    {
+        List<int> numbers = new List<int>() {1, 8, 7, 5, 2, 3, 4, 9, 6};
+
+        WriteLine("Numbers before sorting");
+        foreach (int number in numbers)
+        {
+            WriteLine(number);
+        }
+
+        numbers.Sort();
+
+        WriteLine("Numbers after sorting");
+        foreach (int number in numbers)
+        {
+            WriteLine(number);
+        }
+
+        numbers.Reverse();
+
+        WriteLine("Numbers in descending order");
+        foreach (int number in numbers)
+        {
+            WriteLine(number);
+        }
+
+
+        List<string> alphabets = new List<string>() {"B", "F", "D", "E", "A", "C"};
+
+        WriteLine("Alphabets before sorting");
+        foreach (string alphabet in alphabets)
+        {
+            WriteLine(alphabet);
+        }
+
+        alphabets.Sort();
+
+        WriteLine("Alphabets after sorting");
+        foreach (string alphabet in alphabets)
+        {
+            WriteLine(alphabet);
+        }
+
+        alphabets.Reverse();
+
+        WriteLine("Alphabets in descending order");
+        foreach (string alphabet in alphabets)
+        {
+            WriteLine(alphabet);
+        }
+    }
+    */
+
+    /* LESSON 78 - SORT A LIST OF COMPLEX TYPES */
+
+    /*
+    public static void Main()
+    {
+        Customer customer1 = new Customer()
+        {
+            ID = 101,
+            Name = "Mark",
+            Salary = 4000,
+            Type = "RetailCustomer"
+        };
+
+        Customer customer2 = new Customer()
+        {
+            ID = 102,
+            Name = "Pam",
+            Salary = 7000,
+            Type = "RetailCustomer"
+        };
+
+        Customer customer3 = new Customer()
+        {
+            ID = 103,
+            Name = "Rob",
+            Salary = 5500,
+            Type = "RetailCustomer"
+        };
+
+        List<Customer> customers = new List<Customer>();
+        customers.Add(customer1);
+        customers.Add(customer2);
+        customers.Add(customer3);
+
+        WriteLine("Before Sorting");
+        foreach (Customer c in customers)
+        {
+            WriteLine(c.Salary);
+        }
+
+        customers.Sort();
+        WriteLine("After Sorting");
+        foreach (Customer c in customers)
+        {
+            WriteLine(c.Salary);
+        }
+
+        customers.Reverse();
+        WriteLine("Descending Sorting");
+        foreach (Customer c in customers)
+        {
+            WriteLine(c.Salary);
+        }
+
+        SortByName sortByName = new SortByName();
+        customers.Sort(sortByName);
+        WriteLine("Sorting by name");
+        foreach (Customer c in customers)
+        {
+            WriteLine(c.Name);
+        }
+    }
+
+    public class SortByName : IComparer<Customer>
+    {
+        public int Compare(Customer x, Customer y)
+        {
+            return x.Name.CompareTo(y.Name);
+        }
+    }
+
+    public class Customer : IComparable<Customer>
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Salary { get; set; }
+        public string Type { get; set; }
+
+        public int CompareTo(Customer other)
+        {
+            //return this.Name.CompareTo(other.Name);
+
+            //By Salary
+            return this.Salary.CompareTo(other.Salary);
+
+            //if (this.Salary > other.Salary)
+            //    return 1;
+            //else if (this.Salary < other.Salary)
+            //    return -1;
+            //else
+            //    return 0;
+        }
+    }
+    */
+
+    /* LESSON 79 - SORT A LIST OF COMPLEX TYPES USING COMPARISON DELEGATE */
+
+    /*
+    public static void Main()
+    {
+        Customer customer1 = new Customer()
+        {
+            ID = 101,
+            Name = "Mark",
+            Salary = 4000,
+            Type = "RetailCustomer"
+        };
+
+        Customer customer2 = new Customer()
+        {
+            ID = 107,
+            Name = "Pam",
+            Salary = 7000,
+            Type = "RetailCustomer"
+        };
+
+        Customer customer3 = new Customer()
+        {
+            ID = 103,
+            Name = "Rob",
+            Salary = 5500,
+            Type = "RetailCustomer"
+        };
+
+        List<Customer> customers = new List<Customer>();
+        customers.Add(customer1);
+        customers.Add(customer2);
+        customers.Add(customer3);
+
+        //Comparison<Customer> customerComparer = new Comparison<Customer>(CompareCustomer);
+
+        WriteLine("Before sorting");
+        foreach (Customer c in customers)
+        {
+            WriteLine(c.ID);
+        }
+
+        //customers.Sort(customerComparer);
+
+        //customers.Sort(delegate(Customer c1, Customer c2) { return c1.ID.CompareTo(c2.ID);});
+        customers.Sort((x,y) => x.ID.CompareTo(y.ID));
+        WriteLine("After sorting");
+        foreach (Customer c in customers)
+        {
+            WriteLine(c.ID);
+        }
+    }
+
+    //private static int CompareCustomer(Customer x, Customer y)
+    //{
+    //    return x.ID.CompareTo(y.ID);
+    //}
+
+    public class Customer
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Salary { get; set; }
+        public string Type { get; set; }
+    }
+    */
+
+    /* LESSON 80 - SOME USEFUL METHODS OF LIST COLLECTION CLASS */
+
     public static void Main()
     {
 
     }
 
-    /* LESSON 77 - SORT A LIST OF SIMPLE TYPES */
-
-    /* LESSON 78 - SORT A LIST OF COMPLEX TYPES */
-
-    /* LESSON 79 - SORT A LIST OF COMPLEX TYPES USING COMPARISON DELEGATE */
-
-
+    /* LESSON 81 - WHEN TO USE A DICTIONARY OVER LIST */
 }
 
