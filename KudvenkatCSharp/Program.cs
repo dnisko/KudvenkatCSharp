@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Diagnostics;
@@ -3257,11 +3258,130 @@ delegate bool IsPromotable(Employee empl);
 
     /* LESSON 80 - SOME USEFUL METHODS OF LIST COLLECTION CLASS */
 
+    /*
+    public static void Main()
+    {
+        Customer customer1 = new Customer()
+        {
+            Id = 101,
+            Name = "Mark",
+            Salary = 4000,
+            Type = "RetailCustomer"
+        };
+
+        Customer customer2 = new Customer()
+        {
+            Id = 107,
+            Name = "Pam",
+            Salary = 7000,
+            Type = "RetailCustomer"
+        };
+
+        Customer customer3 = new Customer()
+        {
+            Id = 103,
+            Name = "Rob",
+            Salary = 5500,
+            Type = "RetailCustomer"
+        };
+
+        List<Customer> customers = new List<Customer>(100);
+        customers.Add(customer1);
+        customers.Add(customer2);
+        customers.Add(customer3);
+
+        //TrueForAll
+        WriteLine("Are all salaries grated than 5000 - {0}",customers.TrueForAll(x => x.Salary > 5000));
+
+        //AsReadOnly
+        ReadOnlyCollection<Customer> readonlyCustomers = customers.AsReadOnly();
+        WriteLine("Items = {0}", customers.Count);
+
+        //TrimExcess
+        WriteLine("Capacity before trimming - {0}",customers.Capacity);
+        customers.TrimExcess();//gets rid off empty elements
+        WriteLine("Capacity after trimming - {0}", customers.Capacity);
+
+    }
+
+    private class Customer
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Salary { get; set; }
+        public string Type { get; set; }
+    }
+    */
+
+    /* LESSON 81 - WHEN TO USE A DICTIONARY OVER LIST */
+
+    /*
+     //CONTINUES IN Dictionary81
+    public static void Main()
+    {
+        Country country1 = new Country(){Code = "AUS", Name = "Australia", Capital = "Canberra"};
+        Country country2 = new Country() { Code = "IND", Name = "India", Capital = "New Delhi" };
+        Country country3 = new Country() { Code = "USA", Name = "United States", Capital = "Washington" };
+        Country country4 = new Country() { Code = "GBR", Name = "Great Britain", Capital = "London" };
+        Country country5 = new Country() { Code = "CAN", Name = "Canada", Capital = "Ottawa" };
+
+        //List<Country> listCountries = new List<Country>();
+        //listCountries.Add(country1);
+        //listCountries.Add(country2);
+        //listCountries.Add(country3);
+        //listCountries.Add(country4);
+        //listCountries.Add(country5);
+
+        Dictionary<string, Country> dictionaryCountries = new Dictionary<string, Country>();
+        dictionaryCountries.Add(country1.Code, country1);
+        dictionaryCountries.Add(country2.Code, country2);
+        dictionaryCountries.Add(country3.Code, country3);
+        dictionaryCountries.Add(country4.Code, country4);
+        dictionaryCountries.Add(country5.Code, country5);
+
+        string strUserChoice = string.Empty;
+        do
+        {
+            WriteLine("Enter country code ");
+            string strCountryCode = Console.ReadLine().ToUpper();
+
+            Country resultCountry = dictionaryCountries.ContainsKey(strCountryCode) ?
+                dictionaryCountries[strCountryCode] : null;//listCountries.Find(country => country.Code == strCountryCode);
+            if (resultCountry == null)
+            {
+                WriteLine("Country code is not valid");
+            }
+            else
+            {
+                WriteLine("Name = {0}, Capital = {1}", resultCountry.Name, resultCountry.Capital);
+            }
+
+            do
+            {
+                WriteLine("Do you want to continue - YES or NO?");
+                strUserChoice = ReadLine().ToUpper();
+            } while (strUserChoice != "NO" && strUserChoice != "YES");
+
+        } while (strUserChoice == "YES");
+    }
+
+    public class Country
+    {
+        public string Name { get; set; }
+        public string Code { get; set; }
+        public string Capital { get; set; }
+    }
+    */
+
+    /* LESSON 82 - GENERIC QUEUE COLLECTION CLASS */
+
     public static void Main()
     {
 
     }
 
-    /* LESSON 81 - WHEN TO USE A DICTIONARY OVER LIST */
+    /* LESSON 83 - GENERIC STACK COLLECTION CLASS */
+
+    /* LESSON 84 - REAL TIME EXAMPLE OF QUEUE COLLECTION CLASS */
 }
 
