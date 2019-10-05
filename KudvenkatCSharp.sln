@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indexers", "Indexers64\Inde
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionary81", "Dictionary81\Dictionary81.csproj", "{D6A4187F-FF78-4BAA-8755-E527991CBAF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueAndStack84And85", "QueueAndStack84And85\QueueAndStack84And85.csproj", "{D694A2C3-C1E2-4FB4-B1DD-C0A4A25641E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{D6A4187F-FF78-4BAA-8755-E527991CBAF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6A4187F-FF78-4BAA-8755-E527991CBAF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6A4187F-FF78-4BAA-8755-E527991CBAF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D694A2C3-C1E2-4FB4-B1DD-C0A4A25641E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D694A2C3-C1E2-4FB4-B1DD-C0A4A25641E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D694A2C3-C1E2-4FB4-B1DD-C0A4A25641E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D694A2C3-C1E2-4FB4-B1DD-C0A4A25641E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

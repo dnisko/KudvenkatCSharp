@@ -3476,11 +3476,113 @@ delegate bool IsPromotable(Employee empl);
 
     /* LESSON 83 - GENERIC STACK COLLECTION CLASS */
 
+    /*
+    public static void Main()
+    {
+        Customer customer1 = new Customer()
+        {
+            ID = 101,
+            Name = "Mark",
+            Gender = "Male"
+        };
+
+        Customer customer2 = new Customer()
+        {
+            ID = 102,
+            Name = "Pam",
+            Gender = "Female"
+        };
+
+        Customer customer3 = new Customer()
+        {
+            ID = 103,
+            Name = "John",
+            Gender = "Male"
+        };
+
+        Customer customer4 = new Customer()
+        {
+            ID = 104,
+            Name = "Ken",
+            Gender = "Male"
+        };
+
+        Customer customer5 = new Customer()
+        {
+            ID = 105,
+            Name = "Valarie",
+            Gender = "Female"
+        };
+
+        Stack<Customer> stackCustomers = new Stack<Customer>();
+        stackCustomers.Push(customer1);
+        stackCustomers.Push(customer2);
+        stackCustomers.Push(customer3);
+        stackCustomers.Push(customer4);
+        stackCustomers.Push(customer5);
+
+        //Customer c1 = stackCustomers.Pop();
+        //WriteLine(c1.ID + " - " + c1.Name);
+        //WriteLine("Items left in the stack - " +stackCustomers.Count);
+
+        //Customer c2 = stackCustomers.Pop();
+        //WriteLine(c2.ID + " - " + c2.Name);
+        //WriteLine("Items left in the stack - " + stackCustomers.Count);
+
+        //Customer c3 = stackCustomers.Pop();
+        //WriteLine(c3.ID + " - " + c3.Name);
+        //WriteLine("Items left in the stack - " + stackCustomers.Count);
+
+        //Customer c4 = stackCustomers.Pop();
+        //WriteLine(c4.ID + " - " + c4.Name);
+        //WriteLine("Items left in the stack - " + stackCustomers.Count);
+
+        //Customer c5 = stackCustomers.Pop();
+        //WriteLine(c5.ID + " - " + c5.Name);
+        //WriteLine("Items left in the stack - " + stackCustomers.Count);
+
+
+        //foreach (Customer c in stackCustomers)
+        //{
+        //    WriteLine(c.ID + " - " + c.Name);
+        //    WriteLine("Total items in the queue = " + stackCustomers.Count);
+        //}
+
+        Customer c = stackCustomers.Peek();
+        WriteLine(c.ID + " - " + c.Name);
+        WriteLine("Total items in the queue = " + stackCustomers.Count);
+
+        WriteLine(stackCustomers.Contains(customer1));
+    }
+    public class Customer
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Gender { get; set; }
+    }
+    */
+
+    /* LESSON 84 - REAL TIME EXAMPLE OF QUEUE COLLECTION CLASS */
+
+    /*
+     *
+     * Queue&Stack84&85
+     *
+     */
+
+    /* LESSON 85 - REAL TIME EXAMPLE OF STACK COLLECTION CLASS */
+
+    /*
+     *
+     * Queue&Stack84&85
+     *
+     */
+
+    /* LESSON 86 - MULTITHREADING */
+
     public static void Main()
     {
 
     }
-
-    /* LESSON 84 - REAL TIME EXAMPLE OF QUEUE COLLECTION CLASS */
 }
 
