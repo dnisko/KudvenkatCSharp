@@ -3578,7 +3578,31 @@ delegate bool IsPromotable(Employee empl);
      *
      */
 
-    /* LESSON 86 - MULTITHREADING */
+    /* LESSON 86 - MultiThreading */
+
+    /*
+     *
+     * MultiThreading
+     *
+     */
+
+    /* LESSON 87 - ADVANTAGES AND DISADVANTAGES OF MultiThreading */
+
+    /*
+     *
+     *  ADVANTAGES:
+     * 1. To maintain a responsive user interface
+     * 2. To make efficient use of processor time while waiting for I/O operations to complete
+     * 3. To split large, CPU-bound tasks to be processed simultaneously on a machines that has multiple processors/cores
+     *
+     *  DISADVANTAGES:
+     * 1. On a single processor/core machine, threading can affect performance negatively as there is overhead involved with context switching
+     * 2. Have to write more lines of code to accomplish the same task
+     * 3. Mul-threaded applications are difficult to write, understand, debug and maintain
+     *
+     */
+
+    /* LESSON 88 - ThreadStart DELEGATE */
 
     public static void Main()
     {

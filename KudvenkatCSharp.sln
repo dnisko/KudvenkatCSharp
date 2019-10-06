@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionary81", "Dictionary8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueAndStack84And85", "QueueAndStack84And85\QueueAndStack84And85.csproj", "{D694A2C3-C1E2-4FB4-B1DD-C0A4A25641E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThreading86", "MultiThreading86\MultiThreading86.csproj", "{84199039-BFA4-4EB5-BD0C-8FD854E38D12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{D694A2C3-C1E2-4FB4-B1DD-C0A4A25641E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D694A2C3-C1E2-4FB4-B1DD-C0A4A25641E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D694A2C3-C1E2-4FB4-B1DD-C0A4A25641E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84199039-BFA4-4EB5-BD0C-8FD854E38D12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84199039-BFA4-4EB5-BD0C-8FD854E38D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84199039-BFA4-4EB5-BD0C-8FD854E38D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84199039-BFA4-4EB5-BD0C-8FD854E38D12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
