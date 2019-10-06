@@ -3604,9 +3604,292 @@ delegate bool IsPromotable(Employee empl);
 
     /* LESSON 88 - ThreadStart DELEGATE */
 
+    /*
+    public static void Main()
+    {
+        Number number = new Number();
+        Thread T1 = new Thread(number.PrintNumbers);//()=> Number.PrintNumbers());
+        T1.Start();
+    }
+
+    class Number
+    {
+        public void PrintNumbers()//static
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                WriteLine(i);
+            }
+        }
+    }
+    */
+
+    /* LESSON 89 - ParameterizedThreadStart DELEGATE */
+
+    /*
+    public static void Main()
+    {
+        Number number = new Number();
+        WriteLine("Enter target number: ");
+        object target = ReadLine();
+
+        //ParameterizedThreadStart parameterizedThreadStart = new ParameterizedThreadStart(number.PrintNumbers);
+        Thread T1 = new Thread(number.PrintNumbers);
+        T1.Start(target);
+    }
+
+    class Number
+    {
+        public void PrintNumbers(object target)
+        {
+            int number = 0;
+            if (int.TryParse(target.ToString(), out number))
+            {
+                for (int i = 1; i <= number; i++)
+                {
+                    WriteLine(i);
+                }
+            }
+        }
+    }
+    */
+
+    /* LESSON 90 - PASSING DATA TO THE THREAD FUNCTION IA TYPE SAFE MANNER */
+
+    /*
+    public static void Main()
+    {
+        WriteLine("Enter target number: ");
+        int target = Convert.ToInt32(ReadLine());
+
+        Number number = new Number(target);
+
+        //ParameterizedThreadStart parameterizedThreadStart = new ParameterizedThreadStart(number.PrintNumbers);
+        Thread T1 = new Thread(new ThreadStart(number.PrintNumbers));
+        T1.Start();
+    }
+
+    class Number
+    {
+        private int _target;
+
+        public Number(int target)
+        {
+            this._target = target;
+        }
+        public void PrintNumbers()
+        {
+            {
+                for (int i = 1; i <= _target; i++)
+                {
+                    WriteLine(i);
+                }
+            }
+        }
+    }
+    */
+
+    /* LESSON 91 - RETRIEVING DATA FROM THREAD FUNCTION USING CALLBACK METHOD */
+
+    /*
+    public delegate void SumOfNumbers(int SumOfNumbers);
+
+    public static void PrintSum(int sum)
+    {
+        WriteLine("Sum of numbers = " + sum);
+    }
+
+    public static void Main()
+    {
+        WriteLine("Enter target number: ");
+        int target = Convert.ToInt32(ReadLine());
+
+        SumOfNumbers callback = new SumOfNumbers(PrintSum);
+
+        Number number = new Number(target, callback);
+
+        //ParameterizedThreadStart parameterizedThreadStart = new ParameterizedThreadStart(number.PrintNumbers);
+        Thread T1 = new Thread(new ThreadStart(number.PrintSumOfNumbers));
+        T1.Start();
+    }
+
+    class Number
+    {
+        private int _target;
+        private SumOfNumbers _callBackMethod;
+
+        public Number(int target, SumOfNumbers callBackMethod)
+        {
+            this._target = target;
+            this._callBackMethod = callBackMethod;
+        }
+
+        public void PrintSumOfNumbers()
+        {
+            int sum = 0;
+            for (int i = 1; i <= _target; i++)
+            {
+                sum = i + sum;
+            }
+
+            if (_callBackMethod != null)
+            {
+                _callBackMethod(sum);
+            }
+        }
+    }
+    */
+
+    /* LESSON 92 - SIGNIFICANCE OF THREAD JOIN AND THREAD IsAlive FUNCTIONS */
+
+    /*
+    public static void Main()
+    {
+        WriteLine("Main started");
+        Thread T1 = new Thread(Program.Thread1Function);
+        T1.Start();
+
+        Thread T2 = new Thread(Program.Thread2Function);
+        T2.Start();
+
+        if (T1.Join(1000))
+        {
+            WriteLine("Thread1Function completed");
+        }
+        else
+        {
+            WriteLine("Thread1Function has not completed in 1 second");
+        }
+
+        T2.Join();
+        WriteLine("Thread2Function completed");
+
+        for (int i = 1; i <= 10; i ++)
+        {
+            if (T1.IsAlive)
+            {
+                WriteLine("Thread1Function is still doing it's work'");
+                Thread.Sleep(500);
+            }
+            else
+            {
+                WriteLine("Thread1Function completed");
+                break;
+            }
+        }
+
+        WriteLine("Main completed");
+    }
+
+    public static void Thread1Function()
+    {
+
+        WriteLine("Thread1Function started");
+        Thread.Sleep(5000);
+        WriteLine("Thread1Function is about to return");
+    }
+    public static void Thread2Function()
+    {
+        WriteLine("Thread2Function started");
+    }
+    */
+
+    /* LESSON 93 - PROTECTING SHARED RESOURCES FROM CONCURRENT ACCESS IN  MULTI-THREADING */
+
+    /*
+    static int Total = 0;
+    public static void Main()
+    {
+        Stopwatch stopwatch = Stopwatch.StartNew();
+
+        Thread thread1 = new Thread(AddOneMillion);
+        Thread thread2 = new Thread(AddOneMillion);
+        Thread thread3 = new Thread(AddOneMillion);
+
+        thread1.Start(); thread2.Start(); thread3.Start();
+        thread1.Join(); thread2.Join(); thread3.Join();
+
+        WriteLine("Total = {0}", Total);
+
+        stopwatch.Stop();
+        WriteLine(stopwatch.ElapsedTicks);
+        //WriteLine(TimeSpan.TicksPerSecond);
+    }
+
+    //static object _lock = new object();
+    public static void AddOneMillion()
+    {
+        for (int i = 1; i <= 1000000; i++)
+        {
+            //Total++;//different output 
+
+            Interlocked.Increment(ref Total);//same output //faster
+
+            //lock (_lock)//same output //slower
+            //{
+            //    Total++;
+            //}
+        }
+    }
+    */
+
+    /* LESSON 94 - DIFFERENCE BETWEEN MONITOR AND LOCK */
+
+    /*
+    static int Total = 0;
+    public static void Main()
+    {
+        Stopwatch stopwatch = Stopwatch.StartNew();
+
+        Thread thread1 = new Thread(AddOneMillion);
+        Thread thread2 = new Thread(AddOneMillion);
+        Thread thread3 = new Thread(AddOneMillion);
+
+        thread1.Start();
+        thread2.Start();
+        thread3.Start();
+        thread1.Join();
+        thread2.Join();
+        thread3.Join();
+
+        WriteLine("Total = {0}", Total);
+
+        stopwatch.Stop();
+        WriteLine(stopwatch.ElapsedTicks);
+        //WriteLine(TimeSpan.TicksPerSecond);
+    }
+
+    static object _lock = new object();
+
+    public static void AddOneMillion()
+    {
+        for (int i = 1; i <= 1000000; i++)
+        {
+            Monitor.Enter(_lock);
+            try
+            {
+                Total++;
+            }
+            finally
+            {
+                Monitor.Exit(_lock);
+            }
+
+            //lock (_lock)
+            //{
+            //    Total++;
+            //}
+        }
+    }
+    */
+
+    /* LESSON 95 - DEADLOCK IN A MULTI-THREADED PROGRAM */
+
     public static void Main()
     {
 
     }
+
+    /* LESSON 96 - HOW TO SOLVE A DEADLOCK IN A MULTI-THREADED PROGRAM */
 }
 
