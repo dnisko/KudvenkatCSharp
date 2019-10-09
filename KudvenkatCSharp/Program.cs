@@ -3885,11 +3885,354 @@ delegate bool IsPromotable(Employee empl);
 
     /* LESSON 95 - DEADLOCK IN A MULTI-THREADED PROGRAM */
 
+    /*
     public static void Main()
     {
+        WriteLine("Main started");
+        Account accountA = new Account(101,5000);
+        Account accountB = new Account(102,3000);
 
+        Account.AccountManager accountManagerA = new Account.AccountManager(accountA,accountB,1000);
+        Thread T1 = new Thread(accountManagerA.Transfer);
+        T1.Name = "T1";
+
+        Account.AccountManager accountManagerB = new Account.AccountManager(accountB, accountA, 2000);
+        Thread T2 = new Thread(accountManagerB.Transfer);
+        T2.Name = "T2";
+
+        T1.Start();
+        T2.Start();
+
+        T1.Join();
+        T2.Join();
+
+        WriteLine("Main Completed");
     }
 
+    public class Account
+    {
+        double _ballance;
+        int _id;
+
+        public Account(int id, double balance)
+        {
+            this._ballance = balance;
+            this._id = id;
+        }
+
+        public int ID
+        {
+            get { return _id; }
+        }
+
+        public void Withdraw(double amount)
+        {
+            _ballance -= amount;
+        }
+
+        public void Deposit(double amount)
+        {
+            _ballance += amount;
+        }
+
+        public class AccountManager
+        {
+            Account _fromAccount;
+            Account _toAccount;
+            double _ammountToTransfer;
+
+            public AccountManager(Account fromAccount, Account toAccount, double ammountToTransfer)
+            {
+                this._fromAccount = fromAccount;
+                this._toAccount = toAccount;
+                this._ammountToTransfer = ammountToTransfer;
+            }
+
+            public void Transfer()
+            {
+                Console.WriteLine(Thread.CurrentThread.Name + " trying to acquire lock on " + _fromAccount.ID.ToString());
+                lock (_fromAccount)
+                {
+                    WriteLine(Thread.CurrentThread.Name + " acquired lock on " + _fromAccount.ID.ToString());
+
+                    WriteLine(Thread.CurrentThread.Name + " suspended for 1 second");
+
+                    Thread.Sleep(1000);
+
+                    WriteLine(Thread.CurrentThread.Name + " back in action and trying to acquire lock on " + _toAccount.ID.ToString());
+                    lock (_toAccount)
+                    {
+                        WriteLine("This code will not be executed");
+                        _fromAccount.Withdraw(_ammountToTransfer);
+                        _toAccount.Withdraw(_ammountToTransfer);
+                    }
+                }
+            }
+        }
+    }
+
+    */
+
     /* LESSON 96 - HOW TO SOLVE A DEADLOCK IN A MULTI-THREADED PROGRAM */
+
+    /*
+    public static void Main()
+    {
+        WriteLine("Main started");
+        Account accountA = new Account(101, 5000);
+        Account accountB = new Account(102, 3000);
+
+        Account.AccountManager accountManagerA = new Account.AccountManager(accountA, accountB, 1000);
+        Thread T1 = new Thread(accountManagerA.Transfer);
+        T1.Name = "T1";
+
+        Account.AccountManager accountManagerB = new Account.AccountManager(accountB, accountA, 2000);
+        Thread T2 = new Thread(accountManagerB.Transfer);
+        T2.Name = "T2";
+
+        T1.Start();
+        T2.Start();
+
+        T1.Join();
+        T2.Join();
+
+        WriteLine("Main Completed");
+    }
+
+    public class Account
+    {
+        double _ballance;
+        int _id;
+
+        public Account(int id, double balance)
+        {
+            this._ballance = balance;
+            this._id = id;
+        }
+
+        public int ID
+        {
+            get { return _id; }
+        }
+
+        public void Withdraw(double amount)
+        {
+            _ballance -= amount;
+        }
+
+        public void Deposit(double amount)
+        {
+            _ballance += amount;
+        }
+
+        public class AccountManager
+        {
+            Account _fromAccount;
+            Account _toAccount;
+            double _ammountToTransfer;
+
+            public AccountManager(Account fromAccount, Account toAccount, double ammountToTransfer)
+            {
+                this._fromAccount = fromAccount;
+                this._toAccount = toAccount;
+                this._ammountToTransfer = ammountToTransfer;
+            }
+
+            public void Transfer()
+            {
+                object _lock1, _lock2;
+                if (_fromAccount.ID < _toAccount.ID)
+                {
+                    _lock1 = _fromAccount;
+                    _lock2 = _toAccount;
+                }
+                else
+                {
+                    _lock1 = _toAccount;
+                    _lock2 = _fromAccount;
+                }
+
+                Console.WriteLine(Thread.CurrentThread.Name + " trying to acquire lock on " + ((Account)_lock1).ID.ToString());
+                lock (_lock1)
+                {
+                    WriteLine(Thread.CurrentThread.Name + " acquired lock on " + ((Account)_lock1).ID.ToString());
+
+                    WriteLine(Thread.CurrentThread.Name + " suspended for 1 second");
+
+                    Thread.Sleep(1000);
+
+                    WriteLine(Thread.CurrentThread.Name + " back in action and trying to acquire lock on " + ((Account)_lock2).ID.ToString());
+                    lock (_lock2)
+                    {
+                        WriteLine(Thread.CurrentThread.Name + " acquired lock on " + ((Account)_lock2).ID.ToString());
+                        _fromAccount.Withdraw(_ammountToTransfer);
+                        _toAccount.Deposit(_ammountToTransfer);
+
+                        WriteLine(Thread.CurrentThread.Name + " Transferred " + _ammountToTransfer.ToString() + " from " 
+                                  + _fromAccount.ID.ToString() + " to " + _toAccount.ID.ToString());
+                    }
+                }
+            }
+        }
+    }
+    */
+
+    /* LESSON 97 - PERFORMANCE OF A MULTI-THREADED PROGRAM */
+
+    /*
+    public static void Main()
+    {
+        WriteLine("Processor Count = " + Environment.ProcessorCount);
+
+        Stopwatch stopwatch=Stopwatch.StartNew();
+        
+        EvenNumbersSum();
+        OddNumbersSum();
+
+        stopwatch.Stop();
+
+        WriteLine("Total milliseconds without multiple threads = {0}", stopwatch.ElapsedMilliseconds);
+
+        stopwatch = Stopwatch.StartNew();
+
+        Thread T1 = new Thread(EvenNumbersSum);
+        Thread T2 = new Thread(OddNumbersSum);
+
+        T1.Start();
+        T2.Start();
+
+        T1.Join();
+        T2.Join();
+
+        stopwatch.Stop();
+        WriteLine("Total milliseconds with multiple threads = {0}", stopwatch.ElapsedMilliseconds);
+
+
+        stopwatch = Stopwatch.StartNew();
+
+        Thread T11 = new Thread(EvenNumbersSum);
+        Thread T12 = new Thread(OddNumbersSum);
+        Thread T13 = new Thread(EvenNumbersSum);
+        Thread T14 = new Thread(OddNumbersSum);
+        Thread T15 = new Thread(EvenNumbersSum);
+        Thread T16 = new Thread(OddNumbersSum);
+        Thread T17 = new Thread(EvenNumbersSum);
+        Thread T18 = new Thread(OddNumbersSum);
+        Thread T19 = new Thread(EvenNumbersSum);
+        Thread T20 = new Thread(OddNumbersSum);
+
+        T11.Start();
+        T12.Start();
+        T13.Start();
+        T14.Start();
+        T15.Start();
+        T16.Start();
+        T17.Start();
+        T18.Start();
+        T19.Start();
+        T20.Start();
+
+        T11.Join();
+        T12.Join();
+        T13.Join();
+        T14.Join();
+        T15.Join();
+        T16.Join();
+        T17.Join();
+        T18.Join();
+        T19.Join();
+        T20.Join();
+
+        stopwatch.Stop();
+        WriteLine("Total milliseconds with multiple threads = {0}", stopwatch.ElapsedMilliseconds);
+
+        stopwatch = Stopwatch.StartNew();
+
+        EvenNumbersSum();
+        OddNumbersSum();
+        EvenNumbersSum();
+        OddNumbersSum();
+        EvenNumbersSum();
+        OddNumbersSum();
+        EvenNumbersSum();
+        OddNumbersSum();
+        EvenNumbersSum();
+        OddNumbersSum();
+
+        stopwatch.Stop();
+
+        WriteLine("Total milliseconds without multiple threads = {0}", stopwatch.ElapsedMilliseconds);
+    }
+
+    public static void EvenNumbersSum()
+    {
+        double sum = 0;
+        for (int i = 0; i < 50000000; i++)
+        {
+            if (i % 2 == 0)
+            {
+                sum += i;
+            }
+        }
+        WriteLine("Sum of even numbers = {0}", sum);
+    }
+
+    public static void OddNumbersSum()
+    {
+        double sum = 0;
+        for (int i = 0; i <= 50000000; i++)
+        {
+            if (i % 2 == 1)
+            {
+                sum += i;
+            }
+        }
+        WriteLine("Sum of odd numbers = {0}", sum);
+    }
+    */
+
+    /* LESSON 98 - ANONYMOUS METHODS */
+
+    public static void Main()
+    {
+        List<Employee> listEmployees = new List<Employee>()
+        {
+            new Employee{ID = 101, Name = "Mark"},
+            new Employee{ID = 102, Name = "John"},
+            new Employee{ID = 103, Name = "Mary"}
+        };
+
+        //Step 2
+        //Predicate<Employee> employeePredicate = new Predicate<Employee>(FindEmployee);
+
+        //Step 3
+        //Employee employee = listEmployees.Find(emp => FindEmployee(emp));
+
+        //one liner
+        Employee employee = listEmployees.Find(
+            delegate(Employee emp)
+            {
+                return emp.ID == 102;
+            });
+
+        WriteLine("ID = {0}, Name = {1}",employee.ID, employee.Name);
+
+    }
+    //Step 1
+    //public static bool FindEmployee(Employee emp)
+    //{
+    //    return emp.ID == 102;
+    //}
+    public class Employee
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+    }
+
+    /* LESSON 99 - LAMBDA EXPRESSION */
+
+    /* LESSON 100 - FUNC DELEGATE */
+
+
 }
 
