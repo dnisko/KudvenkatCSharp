@@ -33,14 +33,47 @@ namespace AsyncAncAwait
             return count;
         }
 
+        int characterCount = 0;
+
         private async void btnProcessFile_Click(object sender, EventArgs e)
         {
-            Task<int> task = new Task<int>(CountCharacters);
-            task.Start();
+            //101
+            //Task<int> task = new Task<int>(CountCharacters);
+            //task.Start();
+            //lblResult.Text = "Processing File. Please wait...";
+            //int count = await task;
+            //lblResult.Text = count.ToString() + " characters in file";
+
+            //102
+            //int count = 0;
+
+            //this thread should not control the text, the main thread should (in main function)
+            //Thread thread = new Thread(() => { count = CountCharacters(); 
+            //    lblResult.Text = count.ToString() + " characters in file"; });
+
+
+            //Thread thread = new Thread(() => {
+            //    count = CountCharacters();
+            //    Action action = () => lblResult.Text = count.ToString() + " characters in file";
+            //    this.BeginInvoke(action);//this is asking the main thread to execute this file ^
+            //});
+
+
+            Thread thread = new Thread(() => {
+                characterCount = CountCharacters();
+                Action action = new Action(SetLabelProperty);
+                this.BeginInvoke(action);
+            });
+
+            thread.Start();
 
             lblResult.Text = "Processing File. Please wait...";
-            int count = await task;
-            lblResult.Text = count.ToString() + " characters in file";
+
+        }
+
+        private void SetLabelProperty()
+        {
+            lblResult.Text = characterCount.ToString() + " characters in file";
         }
 
         private void Form1_Load(object sender, EventArgs e)
