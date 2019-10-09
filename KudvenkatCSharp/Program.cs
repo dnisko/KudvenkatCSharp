@@ -4193,6 +4193,8 @@ delegate bool IsPromotable(Employee empl);
 
     /* LESSON 98 - ANONYMOUS METHODS */
 
+    /*
+     //ALSO IN ANONYMOUS METHOD 98
     public static void Main()
     {
         List<Employee> listEmployees = new List<Employee>()
@@ -4228,8 +4230,45 @@ delegate bool IsPromotable(Employee empl);
         public int ID { get; set; }
         public string Name { get; set; }
     }
+    */
 
     /* LESSON 99 - LAMBDA EXPRESSION */
+
+    public static void Main()
+    {
+        List<Employee> listEmployees = new List<Employee>()
+        {
+            new Employee{ID = 101, Name = "Mark"},
+            new Employee{ID = 102, Name = "John"},
+            new Employee{ID = 103, Name = "Mary"}
+        };
+
+        //Step 2
+        //Predicate<Employee> employeePredicate = new Predicate<Employee>(FindEmployee);
+
+        //Step 3
+        //Employee employee = listEmployees.Find(emp => FindEmployee(emp));
+
+        //one liner
+        Employee employee = listEmployees.Find((Employee emp) => emp.ID == 102);
+
+        WriteLine("ID = {0}, Name = {1}", employee.ID, employee.Name);
+
+
+        int count = listEmployees.Count(emp => emp.Name.StartsWith("M"));
+        WriteLine("Count = {0}", count);
+
+    }
+    //Step 1
+    //public static bool FindEmployee(Employee emp)
+    //{
+    //    return emp.ID == 102;
+    //}
+    public class Employee
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+    }
 
     /* LESSON 100 - FUNC DELEGATE */
 

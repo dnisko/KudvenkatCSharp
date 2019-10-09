@@ -23,7 +23,12 @@ namespace AnonimousMethod98
             Button1.Text = "Click me";
             //Button1.Click += new EventHandler(Button1_Click);
 
-            Button1.Click += delegate//(object send, EventArgs eventArgs)
+
+            //98
+            //Button1.Click += delegate(object send, EventArgs eventArgs){MessageBox.Show("Hello, you just clicked me");};
+
+            //99
+            Button1.Click += (eventSender, eventArgs) =>
             {
                 MessageBox.Show("Hello, you just clicked me");
             };

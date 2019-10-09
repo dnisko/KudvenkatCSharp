@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueAndStack84And85", "Que
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThreading86", "MultiThreading86\MultiThreading86.csproj", "{84199039-BFA4-4EB5-BD0C-8FD854E38D12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnonimousMethod98", "AnonimousMethod98\AnonimousMethod98.csproj", "{40FA59B0-73B3-4D1B-B92B-85E09ABD5CF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnonimousMethod98And99", "AnonimousMethod98\AnonimousMethod98And99.csproj", "{40FA59B0-73B3-4D1B-B92B-85E09ABD5CF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
