@@ -4234,6 +4234,8 @@ delegate bool IsPromotable(Employee empl);
 
     /* LESSON 99 - LAMBDA EXPRESSION */
 
+    /*
+     ////ALSO IN ANONYMOUS METHOD 98 & 99
     public static void Main()
     {
         List<Employee> listEmployees = new List<Employee>()
@@ -4269,9 +4271,50 @@ delegate bool IsPromotable(Employee empl);
         public int ID { get; set; }
         public string Name { get; set; }
     }
+    */
 
     /* LESSON 100 - FUNC DELEGATE */
 
+    /*
+    public static void Main()
+    {
+        List<Employee> listEmployees = new List<Employee>()
+        {
+            new Employee{ID = 101, Name = "Mark"},
+            new Employee{ID = 102, Name = "John"},
+            new Employee{ID = 103, Name = "Mary"}
+        };
 
+        //LAMBDA, FUNC and DELEGATE ARE THE SAME!!!
+        //Func<Employee, string> selector = employee => "Name = " + employee.Name;
+        //IEnumerable<string> names = listEmployees.Select(selector);
+
+        IEnumerable<string> names = listEmployees.Select(employee => "Name = " + employee.Name);
+
+        foreach (string name in names)
+        {
+            WriteLine(name);
+        }
+
+        Func<int, int, string> fundDelegate = (firstNumber, secondNumber) => "Sum = " +(firstNumber + secondNumber).ToString();
+        string result = fundDelegate(10, 20);
+        WriteLine(result);
+    }
+    public class Employee
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+    }
+    */
+
+    /* LESSON 101 - ASYNC AWAIT */
+
+    /*
+     *
+     * ASYNC AWAIT 101
+     *
+     */
+
+    /* LESSON 102 - WAIT FOR THREAD TO FINISH WITHOUT BLOCKING */
 }
 
